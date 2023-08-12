@@ -1,3 +1,13 @@
+import typer
+import grpc
+from concurrent import futures
+from sentence_transformers import SentenceTransformer
+from proto import embedding_pb2, embedding_pb2_grpc # will complain until first run
+
+import embedding_pb2_grpc
+import numpy as np
+from time import time
+
 import logging
 from rich.logging import RichHandler
 
@@ -5,20 +15,10 @@ FORMAT = "%(message)s"
 logging.basicConfig(
     level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
 )
-
 logger = logging.getLogger("rich")
 
-import typer
-import grpc
-from concurrent import futures
-from sentence_transformers import SentenceTransformer
-from proto import embedding_pb2, embedding_pb2_grpc
 
-import embedding_pb2_grpc
-import numpy as np
-from time import time
-
-import sys
+# override default incoming message size limit of 4MB
 MAX_MESSAGE_LENGTH = -1 # -1 means unlimited
 OPTIONS=(
         ('grpc.max_send_message_length', MAX_MESSAGE_LENGTH),
@@ -43,22 +43,8 @@ class EmbeddingService(embedding_pb2_grpc.EmbeddingServiceServicer):
         end = time()
         duration = end-start
         per = duration/len(texts)
-        logger.info(f'GenerateEmbeddings finished in {duration:.4f}s ({per:.6f}s per text).')
+        logger.info(f'Embeddings completed @ {per:.6f}s per text.')
         return response
-
-
-
-def _client(port):
-    """ An example client calling the EmbeddingService. """
-    with grpc.insecure_channel(f'localhost:{port}') as channel:
-        stub = embedding_pb2_grpc.EmbeddingServiceStub(channel)
-        texts = ["This is a sample text.", "Another example text."]
-        response = stub.GenerateEmbeddings(embedding_pb2.EmbeddingRequest(texts=texts))
-        
-        embeddings = [np.array(e.values) for e in response.embeddings]
-        for text, embedding in zip(texts, embeddings):
-            print(f"Text: {text}")
-            print(f"Embedding: {embedding}")
 
 def serve(port: int = 50052, device: str = 'cpu'):
     logger.info(f"Server started on port {port}...")
