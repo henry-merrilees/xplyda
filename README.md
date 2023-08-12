@@ -14,9 +14,11 @@ docker-compose up
 
 ### Server.py usage
 
+```
 Usage: server.py [OPTIONS]
 
  Options
   --port          INTEGER  [default: 50052]
   --device        TEXT     [default: cpu]
   --help                   Show this message and exit.
+```
