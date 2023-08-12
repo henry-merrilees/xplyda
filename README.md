@@ -4,13 +4,13 @@ docker-compose up
 ```
 
 ### Next steps...
-- [] add qdrant
-- [] add import mechanisms
-- [] add search functionality
-- [] add a front end 
-- [] currently port num in rust is magic num... yeah I should fix that... not really too excited to do that until rest of cli
-- [] add better import stuff
-- [] support images
+- [ ] add qdrant
+- [ ] add import mechanisms
+- [ ] add search functionality
+- [ ] add a front end 
+- [ ] currently port num in rust is magic num... yeah I should fix that... not really too excited to do that until rest of cli
+- [ ] add better import stuff
+- [ ] support images
 
 ### Server.py usage
 
