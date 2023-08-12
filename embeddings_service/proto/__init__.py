@@ -16,7 +16,7 @@ def compile_proto():
 
 compile_proto()
 # this will complain until the proto files are generated
-import embedding_pb2 as embedding_pb2
-import embedding_pb2_grpc as embedding_pb2_grpc
+import embedding_pb2
+import embedding_pb2_grpc
 
 __all__ = ("embedding_pb2", "embedding_pb2_grpc")
