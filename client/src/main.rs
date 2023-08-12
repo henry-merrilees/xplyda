@@ -7,7 +7,6 @@ pub mod embedding {
     tonic::include_proto!("embedding");
 }
 
-#[allow(unreachable_code)]
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let delay_duration = std::time::Duration::from_secs(2);
