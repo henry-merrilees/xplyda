@@ -7,8 +7,6 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.101.0"
-uvicorn = "^0.23.2"
 sentence-transformers = "^2.2.2"
 grpcio = "^1.57.0"
 grpcio-tools = "^1.57.0"
