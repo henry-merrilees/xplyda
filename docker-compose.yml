@@ -1,0 +1,32 @@
+version: '3'
+services:
+  embedding_service:
+    image: python:3.11
+    
+    volumes:
+      - ./embeddings_service:/embeddings_service
+      - ./proto:/proto
+    working_dir: /embeddings_service
+    ports:
+      - "[::]:50052:50052"
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        pip install poetry &&
+        poetry install &&
+        poetry run python server.py
+
+  client:
+    image: rust:latest
+    volumes:
+      - ./client:/client
+      - ./proto:/proto
+    working_dir: /client
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        apt-get update &&
+        apt-get install -y protobuf-compiler &&
+        cargo run --release
