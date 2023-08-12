@@ -9,3 +9,18 @@ docker-compose up
 - add search functionality
 - add a front end 
 - add better import stuff
+
+
+
+
+
+
+
+
+Usage: server.py [OPTIONS]
+
+╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --port          INTEGER  [default: 50052]                                                                                                              │
+│ --device        TEXT     [default: cpu]                                                                                                                │
+│ --help                   Show this message and exit.                                                                                                   │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
