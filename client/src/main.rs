@@ -7,6 +7,10 @@ pub mod embedding {
     tonic::include_proto!("embedding");
 }
 
+fn dot(v1: &[f32], v2: &[f32]) -> f32 {
+    v1.iter().zip(v2.iter()).map(|(a, b)| a * b).sum()
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let delay_duration = std::time::Duration::from_secs(2);
@@ -68,8 +72,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("Message: {} -- sentiment: {}", message, score);
     }
     Ok(())
-}
-
-fn dot(v1: &[f32], v2: &[f32]) -> f32 {
-    v1.iter().zip(v2.iter()).map(|(a, b)| a * b).sum()
 }
