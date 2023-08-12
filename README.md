@@ -2,3 +2,10 @@ Little demo w/ grpc server that generates embeddings using huggingface. Then a r
 ```
 docker-compose up
 ```
+
+### Next steps...
+- add qdrant
+- add import mechanisms
+- add search functionality
+- add a front end 
+- add better import stuff
