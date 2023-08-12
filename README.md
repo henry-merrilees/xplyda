@@ -8,19 +8,15 @@ docker-compose up
 - add import mechanisms
 - add search functionality
 - add a front end 
+- currently port num in rust is magic num... yeah I should fix that... not really too excited to do that until rest of cli
 - add better import stuff
 
 
-
-
-
-
-
+### Server.py usage
 
 Usage: server.py [OPTIONS]
 
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --port          INTEGER  [default: 50052]                                                                                                              │
-│ --device        TEXT     [default: cpu]                                                                                                                │
-│ --help                   Show this message and exit.                                                                                                   │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ Options
+  --port          INTEGER  [default: 50052]
+  --device        TEXT     [default: cpu]
+  --help                   Show this message and exit.
